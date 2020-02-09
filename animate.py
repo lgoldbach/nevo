@@ -1,30 +1,33 @@
 from matplotlib import pyplot as plt
 from matplotlib import animation
 from simulate import simulate, make_population
+import numpy as np
+
+
+pop = make_population(10)
+
+colors = [pop[cas].color for cas in pop]
 
 # First set up the figure, the axis, and the plot element we want to animate
 fig = plt.figure()
 ax = plt.axes(xlim=(-10, 10), ylim=(-10, 10))
-line = ax.scatter([], [])
+line = ax.scatter([], [], c=colors, edgecolor='black', linewidth=1)
 
-pop = make_population(10)
 
 # initialization function: plot the background of each frame
 def init():
-    line.set_offsets
+    line.set_offsets(np.c_[[], []])
     return line,
 
-# animation function.  This is called sequentially
+
 def animate(i):
     p = simulate(pop, 1)
-    x, y, c  = [], [], []
+    x, y, c = [], [], []   # clear lists.
     for cas in p:
         x.append(p[cas].position[0])
         y.append(p[cas].position[1])
-        c.append(p[cas].color)
 
-    line.set_xdata(x)
-    line.set_ydata(y)
+    line.set_offsets(np.c_[x, y])
 
     return line,
 
