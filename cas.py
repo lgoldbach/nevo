@@ -1,11 +1,14 @@
 import numpy as np
+from random import uniform as rand_unif
 
 
 class Cas:
-    def __init__(self, name, p, c):
+    def __init__(self, name, p):
         self.position = p
-        self.color = c
         self.name = name
+        self.color = [rand_unif(0, 1),
+                      rand_unif(0, 1),
+                      rand_unif(0, 1)]
 
     def name(self):
         return self.name
