@@ -2,7 +2,7 @@ import numpy as np
 from random import uniform as rand_unif
 
 
-class Cas:
+class Agent:
     def __init__(self, name, p):
         self.position = p
         self.name = name

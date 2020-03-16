@@ -6,7 +6,7 @@ import numpy as np
 
 pop = make_population(10)
 
-colors = [pop[cas].color for cas in pop]
+colors = [pop[agent].color for agent in pop]
 
 # First set up the figure, the axis, and the plot element we want to animate
 fig = plt.figure()
@@ -23,9 +23,9 @@ def init():
 def animate(i):
     p = simulate(pop, 1)
     x, y, c = [], [], []   # clear lists.
-    for cas in p:
-        x.append(p[cas].position[0])
-        y.append(p[cas].position[1])
+    for agent in p:
+        x.append(p[agent].position[0])
+        y.append(p[agent].position[1])
 
     line.set_offsets(np.c_[x, y])
 

@@ -1,18 +1,18 @@
 from numpy.random import uniform as rand
-from cas import Cas
+from agent import Agent
 
 
 def make_population(pop_size):
     population = {}
     for i in range(pop_size):
-        name = "cas" + str(i)
-        population[name] = Cas(name, [rand(-1, 1), rand(-1, 1)],)
+        name = "agent" + str(i)
+        population[name] = Agent(name, [rand(-1, 1), rand(-1, 1)],)
     return population
 
 def simulate(pop, steps):
     for i in range(steps):
-        for cas in pop:
-            pop[cas].move()
+        for Agent in pop:
+            pop[Agent].move()
 
     return pop
 
