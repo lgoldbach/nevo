@@ -1,0 +1,1 @@
+- test if an AI also get's confidence related performance (https://www.psychologytoday.com/us/blog/beautiful-minds/201112/confidence-matters-just-much-ability)
