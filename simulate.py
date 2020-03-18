@@ -1,21 +1,23 @@
-from numpy.random import uniform as rand
+from numpy import random as rand
+import random
 from agent import Agent
+from field import Field
 
 
-def make_population(pop_size):
+def make_population(pop_size, borders: tuple):
     population = {}
     for i in range(pop_size):
         name = "agent" + str(i)
-        population[name] = Agent(name, [rand(-1, 1), rand(-1, 1)],)
+        population[name] = Agent(name, [random.choice(range(1, borders[0])),
+                                        random.choice(range(1, borders[1]))],)
     return population
 
-def simulate(pop, steps):
+def simulate(pop, field, steps):
     for i in range(steps):
+        field.drop_food()
         for Agent in pop:
+            pop[Agent].look(field.field)
             pop[Agent].move()
 
     return pop
-
-popu = make_population(2)
-p = simulate(popu, 3)
 
