@@ -14,10 +14,9 @@ def make_population(pop_size, borders: tuple):
 
 def simulate(pop, field, steps):
     for i in range(steps):
-        field.drop_food()
-        for Agent in pop:
-            pop[Agent].look(field.field)
-            pop[Agent].move()
-
+        for agent in pop:
+            pop[agent].look(field.field)  # observe field
+            pop[agent].move()  # make move
+        field.time_step(pop)  # update field
     return pop
 
