@@ -43,29 +43,20 @@ class Agent(object):
             if self.field_of_vision[new_pos[0], new_pos[1]] < 0:
                 pass  # if hit wall, don't move
             else:
-                # self.reserves += self.field_of_vision[new_pos[0], new_pos[1]] # eat
                 self.position = new_pos
-
 
         else:
             self.position[ax] += step
+        self.eat(self.field_of_vision[tuple(self.position)])
 
     def look(self, surround):
         self.field_of_vision = surround
 
-    @property
-    def reserves(self):
-        return self._reserves
-
-    @reserves.setter
-    def reserves(self, food):
-        if self.reserves + food < 0:
+    def eat(self, food):
+        if self._reserves + food < 0:
             print(f"Reserves of {self.name}shouldn't be below 0")
-
         else:
             self._reserves += food
-
-
 
     def update_neural_net(self):
         # self.nn  = ..
