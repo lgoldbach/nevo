@@ -1,4 +1,8 @@
+# project-specific
 *.mp4
+
+# macOS-specific
 __pycache__
 .idea
 .DS_Store
+*.egg-info
