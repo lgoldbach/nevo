@@ -6,7 +6,7 @@ import numpy as np
 
 
 # Set field and generate population
-f = Field((14, 10))
+f = Field((100, 140))
 pop = make_population(5, np.subtract(f.field.shape, (2,2)))
 colors = [pop[agent].color for agent in pop]  # get agent colors
 
@@ -73,9 +73,10 @@ def animate(i):
     return agents, food,
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=10,
-                               interval=200, blit=True)
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=300,
+                               interval=5000, blit=True)
 
 anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
+print('Finished animation')
 
 plt.show()
